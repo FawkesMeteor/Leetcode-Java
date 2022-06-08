@@ -1,0 +1,24 @@
+//Problem 03
+//longest-substring-without-repeating-characters
+
+// Using Sliding Window by FawkesMeteor
+//Runtime: 9 ms
+//Memory Usage: 49.3 MB
+
+
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        if(s.length()==0){
+            return 0;
+        }
+        int length=0,end=s.length(), cc=0,ee=0;
+        for (int i=0;i<end;i++)
+        {
+            ee = s.substring(cc,i).indexOf(s.charAt(i))+cc;
+            if (ee>=0)
+                cc=ee+1;
+            length = Math.max(length,i-cc+1);
+        }
+        return length;
+    }
+}
