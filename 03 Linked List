@@ -1,0 +1,29 @@
+//Problem 03
+//longest-substring-without-repeating-characters
+
+// Using linked list by FawkesMeteor
+//Runtime: 12 ms
+//Memory Usage: 45.3 MB
+
+
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        if(s.length()==0){
+            return 0;
+        }
+        LinkedList<Character> fifo = new LinkedList();
+        int length=0,end=s.length(), index=0;
+        for (int i=0;i<end;i++)
+        {
+            index = fifo.indexOf(s.charAt(i));
+            for (;index>=0;index--)
+            {
+                fifo.pop();
+            }
+            fifo.add(s.charAt(i));
+            length = Math.max(length,fifo.size());
+            
+        }
+        return length;
+    }
+}
