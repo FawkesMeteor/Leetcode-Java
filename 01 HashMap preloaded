@@ -1,0 +1,25 @@
+//Problem 01
+//two-sum
+
+// Using HashMap preloaded by FawkesMeteor
+//Runtime: 3 ms
+//Memory Usage: 42.9 MB
+
+
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        HashMap<Integer, Integer> locate = new HashMap<Integer, Integer>();
+        for (int i=0; i<nums.length;i++)
+        {
+            locate.put(nums[i],i);
+        }
+        
+        for (int i=0; i<nums.length;i++)
+        {
+            if (locate.containsKey(target-nums[i]))
+                if (locate.get(target-nums[i])!=i)
+                return new int[] {i,locate.get(target-nums[i])};
+        }
+        return new int[] {0,locate.get(target-nums[0])};
+    }
+}
